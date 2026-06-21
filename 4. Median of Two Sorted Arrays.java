@@ -1,6 +1,7 @@
 class Solution {
 
     public double findMedianSortedArrays(int[] a, int[] b) {
+
         if(a.length>b.length){
            return findMedianSortedArrays(b,a);
         }
