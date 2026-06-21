@@ -7,8 +7,7 @@ class Solution {
         for(int i = 0; i < s.length(); i++) {
             char currentChar = s.charAt(i);
             
-            if(charArr[currentChar] > 0 && left < charArr[currentChar])
-                left = charArr[currentChar];
+            left = Math.max(left, charArr[currentChar]);
 
             max = Math.max(max, i-left+1);
 
