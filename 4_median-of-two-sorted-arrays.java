@@ -1,6 +1,6 @@
 class Solution {
     
-    int x=0;int y=0;int no=0;
+    int x=0,y=0,no=0;
 
     private int getNextMin(int[] a, int[] b){
             if(x==a.length){
