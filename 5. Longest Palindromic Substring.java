@@ -1,5 +1,34 @@
 class Solution {
 
+    /* Brute Force
+
+    private boolean isPalindrome(String s) {
+        String rev = new StringBuilder(s).reverse().toString();
+
+        if (rev.equals(s))
+            return true;
+        else
+            return false;
+    }
+
+    public String longestPalindrome(String s) {
+        System.gc();
+        int max = 0;
+        String subPal = "";
+        for (int i = 0; i < s.length(); i++) {
+            for (int j = i; j < s.length(); j++) {
+                String sub = s.substring(i, j + 1);
+                if (isPalindrome(sub)) {
+                    if (max < sub.length()) {
+                        subPal = sub;
+                        max = sub.length();
+                    }
+                }
+            }
+        }
+        return subPal;
+    }*/
+
     public String longestPalindrome(String s) {
         int start = 0, end = 0;
         for (int i = 0; i < s.length(); i++) {
