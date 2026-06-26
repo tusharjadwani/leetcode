@@ -1,17 +1,15 @@
 class Solution {
     public String intToRoman(int num) {
-        String[] romans = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
-        int[] nums = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
+        String[] thousands = { "", "M", "MM", "MMM" };
+        String[] hundreds = { "", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM" };
+        String[] tens = { "", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC" };
+        String[] onces = { "", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
 
-        int i = 0;
         StringBuilder res = new StringBuilder();
-        while (num > 0) {
-            if (num >= nums[i]) {
-                res = res.append(romans[i]);
-                num -= nums[i];
-            } else
-                i++;
-        }
+
+        res = res.append(thousands[num / 1000]).append(hundreds[(num % 1000) / 100]).append(tens[(num % 100) / 10])
+                .append(onces[(num % 10)]);
+
         return res.toString();
 
     }
