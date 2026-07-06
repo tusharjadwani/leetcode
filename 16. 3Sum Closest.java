@@ -6,8 +6,11 @@ class Solution {
 
         Arrays.sort(nums);
 
-        for (int i = 0; i < len; i++) {
+        for (int i = 0; i < len - 2; i++) {
             int left = i + 1, right = len - 1;
+
+            if (i > 0 && nums[i] == nums[i - 1])
+                continue;
 
             while (left < right) {
                 int sum = nums[i] + nums[left] + nums[right];
