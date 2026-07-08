@@ -10,7 +10,6 @@ class Solution {
 
         int len = nums.length;
         for (int i = 0; i < len; i++) {
-
             if (i > 0 && nums[i] == nums[i - 1])
                 continue;
 
