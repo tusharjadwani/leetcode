@@ -22,11 +22,7 @@ class Solution {
             fast = fast.next;
         }
 
-        if (slow == dummy) {
-            return dummy.next.next;
-        } else {
-            slow.next = slow.next.next;
-        }
+        slow.next = slow.next.next;
         return dummy.next;
 
     }
