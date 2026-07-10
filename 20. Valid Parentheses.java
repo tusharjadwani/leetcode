@@ -4,20 +4,19 @@ class Solution {
         if (c.length() % 2 == 1)
             return false;
 
-        Deque<Character> stack = new ArrayDeque<>();
+        char[] arr = new char[c.length()];
+        int i = 0;
         for (char s : c.toCharArray()) {
             if (s == '{') {
-                stack.push('}');
+                arr[i++] = '}';
             } else if (s == '[') {
-                stack.push(']');
+                arr[i++] = ']';
             } else if (s == '(') {
-                stack.push(')');
-            } else if (stack.isEmpty() || stack.pop() != s) {
+                arr[i++] = ')';
+            } else if (i == 0 || arr[--i] != s) {
                 return false;
             }
         }
-
-        return stack.isEmpty();
-
+        return i == 0;
     }
 }
