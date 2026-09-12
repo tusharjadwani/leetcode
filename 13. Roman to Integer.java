@@ -17,10 +17,11 @@ class Solution {
     public int romanToInt(String s) {
         int sum = 0;
         for (int i = 0; i < s.length(); i++) {
-            if (i + 1 != s.length() && getNum(s.charAt(i + 1)) > getNum(s.charAt(i)))
-                sum -= getNum(s.charAt(i));
+            int a2 = getNum(s.charAt(i));
+            if (i + 1 != s.length() && getNum(s.charAt(i + 1)) > a2)
+                sum -= a2;
             else
-                sum += getNum(s.charAt(i));
+                sum += a2;
         }
         return sum;
     }
