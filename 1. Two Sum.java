@@ -1,18 +1,17 @@
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        System.gc();
-        Map<Integer,Integer> map = new HashMap<>();
 
-        for(int j=0;j<nums.length;j++){
-            int complementary = target-nums[j];
+        Map<Integer, Integer> map = new HashMap<>();
 
-            if(map.get(complementary)!=null && map.get(complementary)!=j){
-                return new int[]{j,map.get(complementary)};
-            }
-            map.put(nums[j],j);
+        for (int i = 0; i < nums.length; i++) {
+
+            if (map.get(target - nums[i]) != null)
+                return new int[] { map.get(target - nums[i]), i };
+
+            map.put(nums[i], i);
+
         }
-
         return new int[] {};
-    
+
     }
 }
