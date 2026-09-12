@@ -5,7 +5,7 @@ class Solution {
 
         for (int i = 0; i < nums.length; i++) {
 
-            if (map.get(target - nums[i]) != null)
+            if (map.get(target - nums[i]) != null && map.get(target-nums[i])!=i)
                 return new int[] { map.get(target - nums[i]), i };
 
             map.put(nums[i], i);
