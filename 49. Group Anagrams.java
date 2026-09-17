@@ -19,31 +19,33 @@ class Solution {
         return true;
     }
 
+    private String getAnagramKey(String s1) {
+
+        int[] chars = new int[26];
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < s1.length(); i++)
+            chars[s1.charAt(i) - 'a'] += 1;
+
+        for (int i = 0; i < chars.length; i++)
+            sb.append(chars[i]).append("#");
+
+        System.out.println(sb.toString());
+        return sb.toString();
+    }
+
     public List<List<String>> groupAnagrams(String[] strs) {
 
-        Set<Integer> set = new HashSet<>();
-        List lst = new ArrayList<>();
+        Map<String, List<String>> map = new HashMap<>();
 
         for (int i = 0; i < strs.length; i++) {
-            List<String> arr = new ArrayList<>();
-            for (int j = i + 1; j < strs.length; j++) {
-                if (!set.contains(j) && isAnagrams(strs[i], strs[j])) {
-                    if (!set.contains(i))
-                        arr.add(strs[i]);
+            System.out.println(strs[i]);
+            String st = getAnagramKey(strs[i]);
+            if (map.get(st) == null)
+                map.put(st, new ArrayList<>());
 
-                    arr.add(strs[j]);
-
-                    set.add(i);
-                    set.add(j);
-                }
-            }
-
-            if (arr.size() > 0)
-                lst.add(arr);
-            else if (!set.contains(i)) {
-                lst.add(List.of(strs[i]));
-            }
+            map.get(st).add(strs[i]);
         }
-        return lst;
+        return new ArrayList<>(map.values());
     }
 }
