@@ -9,16 +9,28 @@ class Solution {
                 map.put(nums[i], map.get(nums[i]) + 1);
         }
 
-        List<Integer> lst = new ArrayList<>(map.keySet());
+        List<Integer>[] arr = new ArrayList[nums.length + 1];
+        for (Map.Entry<Integer, Integer> e : map.entrySet()) {
+            if (arr[e.getValue()] == null)
+                arr[e.getValue()] = new ArrayList<>();
 
-        lst.sort((a, b) -> map.get(b) - map.get(a));
-
-        int[] res = new int[k];
-        for (int i = 0; i < k; i++) {
-            res[i] = lst.get(i);
+            arr[e.getValue()].add(e.getKey());
         }
 
-        return res;
+        int[] res = new int[k];
+        int total = 0;
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (arr[i] == null)
+                continue;
+
+            for (int n : arr[i]) {
+                res[total++] = n;
+                if (total == k)
+                    return res;
+            }
+        }
+
+        return  new int[0];
 
     }
 }
