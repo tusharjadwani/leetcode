@@ -18,10 +18,6 @@ class Solution {
                 start = n - i - 1;
 
         }
-
-        System.out.println(start);
-        System.out.println(end);
-
         return end - start + 1;
     }
 }
