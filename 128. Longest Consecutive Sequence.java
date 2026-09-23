@@ -3,24 +3,26 @@ class Solution {
 
         if (nums.length == 0)
             return 0;
+        Set<Integer> set = new HashSet<>();
 
-        Arrays.sort(nums);
-        int count = 1, max = 0;
+        for (int i = 0; i < nums.length; i++) {
+            set.add(nums[i]);
+        }
 
-        for (int i = 0; i < nums.length - 1; i++) {
+        int max = 0;
 
-            if (nums[i + 1] == nums[i])
+        for (int n : set) {
+            int count = 1;
+
+            if (set.contains(n - 1))
                 continue;
 
-            if (nums[i + 1] - 1 == nums[i])
+            while (set.contains(n + count))
                 count++;
-            else {
-                max = Math.max(max, count);
-                count = 1;
-            }
-        }
-        max = Math.max(max, count);
 
+            max = Math.max(max, count);
+
+        }
         return max;
     }
 }
